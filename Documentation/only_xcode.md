@@ -7,6 +7,7 @@ support it:
  - [danger-swift](https://github.com/danger/swift)
  - [swiftlint](https://github.com/realm/swiftlint)
  - [swiftformat](https://github.com/nicklockwood/SwiftFormat)
+ - [Sourcery](https://github.com/krzysztofzablocki/Sourcery)
 
 and... well...
 
@@ -25,20 +26,30 @@ your app and tooling dependencies in one places.
 Because we're not going to be using Swift PM for building apps/libraries/etc then the default template isn't
 useful for us.
 
+Here's what it looks like in the Artsy app, Eigen:
+
 ```swift
 // swift-tools-version:4.2
-// Declares the tooling version of your Package.swift
-// (you may need to update this number)
+// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-    name: "[your app]",
+    name: "[eigen]",
     dependencies: [
       .package(url: "https://github.com/orta/Komondor.git", from: "1.0.0")
+    ],
+    targets: [
+        // This is just an arbitrary Swift file in the app, that has
+        // no dependencies outside of Foundation
+        .target(name: "eigen", dependencies: [], path: "Artsy", sources: ["Stringify.swift"]),
     ]
 )
 ```
+
+> **Note**: See that _target_?  You must have a target (right now) in your `Package.swift` in order to use
+tools which come from your dependencies. Find a single source file which you can call the package using
+the `path:` to find it's folder, and then `sources:` to set up that one target. 
 
 This adds `Komondor` to the app, and allows you to run the CLI for Komondor, you can verify by running 
 `swift run komondor` and seeing the help message.
@@ -61,7 +72,20 @@ Next up: adding your git hooks to the config:
 + #endif
 ```
 
-This config is `"[git hook]": ["command"]`, you can read [more here](./config.md). 
+This config is `"[git hook]": ["command"]`, you can read [more here](./config.md).
 
 Final step: run `swift run komondor install`, this will set up your git-hooks. If you `git add .` and 
 `git commit -m "Added Komondor" to the app, it will run the git-hooks and echo "Hi" to the terminal.
+
+### What now?
+
+Improve your docs, for developers setting up your app for the first time, they will need to run:
+
+```diff
+git clone https://github.com/my/app
+cd app
+
+bundle install
+bundle exec pod install
++ swift run komondor install
+```
