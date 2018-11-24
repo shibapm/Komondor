@@ -40,3 +40,5 @@ These are all keys you can use in the config setting:
     ])
 #endif
 ```
+
+The values can be either a single string, or an array of strings. Each command is executed sequentially. 
