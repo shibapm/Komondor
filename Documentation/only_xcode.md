@@ -4,15 +4,15 @@ Whoah, so, welcome to using Swift Package Manager (SwiftPM). Given work in Swift
 server-side Swift,  it's not really had wide-spread adoption, but a lot of the useful third-party eco-system tools
 support it:
 
- - [danger-swift](https://github.com/danger/swift)
- - [swiftlint](https://github.com/realm/swiftlint)
- - [swiftformat](https://github.com/nicklockwood/SwiftFormat)
+ - [Danger Swift](https://github.com/danger/swift)
+ - [SwiftLint](https://github.com/realm/swiftlint)
+ - [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
  - [Sourcery](https://github.com/krzysztofzablocki/Sourcery)
  - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 
 and... well...
 
- - [komondor](https://github.com/orta/Komondor)
+ - [Komondor](https://github.com/orta/Komondor)
 
 Maybe there's enough support that now is the time to move these sort of dependencies into a package manager.
 
