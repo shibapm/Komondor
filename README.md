@@ -9,7 +9,7 @@ Git Hook automation for Swift and Xcode projects. A port of [Husky](https://gith
 1. Add or amend a `Package.swift`
 2. Add this dependency `.package(url: "https://github.com/orta/Komondor.git", from: "1.0.0"),`
 3. Run the install command: `swift run komondor install`
-4. Add a config section to your `Package.swift`
+4. Add a config section to your [`Package.swift`](https://github.com/orta/Komondor/blob/master/Package.swift)
 
 Then you'll get git-hooks consolidated and centralized so that everyone can work with the same tooling.
 
@@ -19,7 +19,7 @@ Then you'll get git-hooks consolidated and centralized so that everyone can work
 
 Git Hooks like what Komondor provides gits you more surface area for per-project automation. Komondor provides
 an easily understood way to see how all the git automation touch-points in your project will come together. These 
-hooks allow for much faster feedback during development and ley different team-members to use different tools
+hooks allow for much faster feedback during development and let different team-members to use different tools
 but still have the same bar of quality.
 
 For example, adding [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) to your `pre-commit` hook means that
