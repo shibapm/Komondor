@@ -8,6 +8,7 @@ support it:
  - [swiftlint](https://github.com/realm/swiftlint)
  - [swiftformat](https://github.com/nicklockwood/SwiftFormat)
  - [Sourcery](https://github.com/krzysztofzablocki/Sourcery)
+ - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 
 and... well...
 
