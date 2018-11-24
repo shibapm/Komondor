@@ -1,4 +1,4 @@
-<p align="center"><a href='https://www.akc.org/dog-breeds/komondor/'><img width ="100%" src="http://dogsaholic.com/wp-content/uploads/2016/06/Komondor-dog.jpg"><a/></p>
+<p align="center"><a href='https://www.akc.org/dog-breeds/komondor/'><img width ="50%" src="http://dogsaholic.com/wp-content/uploads/2016/06/Komondor-dog.jpg"><a/></p>
 
 # Komondor
 
