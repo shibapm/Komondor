@@ -35,7 +35,7 @@ import PackageDescription
 let package = Package(
     name: "[your app]",
     dependencies: [
-      .package(url: "https://github.com/orta/Komondor.git", from: "0.0.1")
+      .package(url: "https://github.com/orta/Komondor.git", from: "1.0.0")
     ]
 )
 ```
@@ -46,7 +46,7 @@ This adds `Komondor` to the app, and allows you to run the CLI for Komondor, you
 Next up: adding your git hooks to the config:
 
 ```diff
-      .package(url: "https://github.com/orta/Komondor.git", from: "0.0.1")
+      .package(url: "https://github.com/orta/Komondor.git", from: "1.0.0")
     ]
 )
 

@@ -13,9 +13,9 @@ let package = Package(
     products: [ ... ],
     dependencies: [
         // My dependencies
-        .package(url: "https://github.com/orta/PackageConfig.git", from: "0.0.1"),
+        .package(url: "https://github.com/orta/PackageConfig.git", from: "1.0.0"),
         // Dev deps
-+        .package(url: "https://github.com/orta/Komondor.git", from: "0.0.1"),
++        .package(url: "https://github.com/orta/Komondor.git", from: "1.0.0"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"),
     ],
     targets: [...]

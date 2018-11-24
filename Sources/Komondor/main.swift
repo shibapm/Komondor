@@ -1,7 +1,7 @@
 import Foundation
 
 /// Version for showing in verbose mode
-public let KomondorVersion = "0.0.1"
+public let KomondorVersion = "1.0.0"
 
 let isVerbose = CommandLine.arguments.contains("--verbose") || (ProcessInfo.processInfo.environment["DEBUG"] != nil)
 let isSilent = CommandLine.arguments.contains("--silent")
