@@ -17,7 +17,7 @@ Then you'll get git-hooks consolidated and centralized so that everyone can work
 
 > If you care about something, you should automate it.
 
-Git Hooks like what Komondor provides gits you more surface area for per-project automation. Komondor provides
+Git Hooks like what Komondor provides gives you more surface area for per-project automation. Komondor provides
 an easily understood way to see how all the git automation touch-points in your project will come together. These 
 hooks allow for much faster feedback during development and let different team-members to use different tools
 but still have the same bar of quality.
