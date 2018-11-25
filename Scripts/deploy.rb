@@ -22,10 +22,10 @@ end
 File.write("Package.swift", new_package.join())
 
 `git add Package.swift`
-`git commit -m "Prepare for release"`
+`git commit -m "Prepare for release" --no-verify`
 
 `git tag #{version}`
-`git push --tags`
+`git push --tags --no-verify`
 
 package = File.read("Package.swift")
 new_package = package.lines.map do |line| 
