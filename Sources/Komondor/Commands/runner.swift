@@ -34,8 +34,11 @@ public func runner(logger _: Logger, args: [String]) throws {
 
     logger.debug("Running commands for komondor \(commands.joined())")
 
+    var failedCommands = [] as [String]
+    var executedCommand = ""
     do {
         try commands.forEach { command in
+            executedCommand = command
             print("> \(command)")
             // Simple is fine for now
             try shellOut(to: command)
@@ -48,5 +51,11 @@ public func runner(logger _: Logger, args: [String]) throws {
         guard let error = error as? ShellOutError else { return }
         print(error.message) // Prints STDERR
         print(error.output) // Prints STDOUT
+        failedCommands.append(executedCommand)
+    }
+
+    guard failedCommands.isEmpty else {
+        logger.logError("[Komondor] The following commands failed to execute: \(failedCommands.joined())")
+        exit(1)
     }
 }
