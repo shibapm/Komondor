@@ -10,15 +10,7 @@ logger.debug("Setting up .git-hooks for Komondor (v\(KomondorVersion))")
 
 let cliLength = ProcessInfo.processInfo.arguments.count
 
-if cliLength > 1 {
-    let task = CommandLine.arguments[1]
-    if task == "install" {
-        try install(logger: logger)
-    } else if task == "run" {
-        let runnerArgs = Array(CommandLine.arguments.dropFirst().dropFirst())
-        try runner(logger: logger, args: runnerArgs)
-    }
-} else {
+guard cliLength > 1 else {
     print("""
     Welcome to Komondor, it has 2 commands:
 
@@ -27,4 +19,13 @@ if cliLength > 1 {
 
     Docs are available at: https://github.com/orta/Komondor
     """)
+    exit(0)
+}
+
+let task = CommandLine.arguments[1]
+if task == "install" {
+    try install(logger: logger)
+} else if task == "run" {
+    let runnerArgs = Array(CommandLine.arguments.dropFirst().dropFirst())
+    try runner(logger: logger, args: runnerArgs)
 }
