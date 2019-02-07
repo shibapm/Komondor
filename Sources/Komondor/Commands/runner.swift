@@ -43,9 +43,12 @@ public func runner(logger _: Logger, args: [String]) throws {
             //   Store STDOUT and STDERR, and only show it if it fails
             //   Show a stepper like system of all commands
         }
+    } catch let error as ShellOutError {
+        print(error.message)
+        print(error.output)
+        exit(error.terminationStatus)
     } catch {
-        guard let error = error as? ShellOutError else { return }
-        print(error.message) // Prints STDERR
-        print(error.output) // Prints STDOUT
+        print(error)
+        exit(1)
     }
 }
