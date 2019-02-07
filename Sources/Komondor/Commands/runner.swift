@@ -38,8 +38,7 @@ public func runner(logger _: Logger, args: [String]) throws {
         try commands.forEach { command in
             print("> \(command)")
             // Simple is fine for now
-            try shellOut(to: command)
-
+            print(try shellOut(to: command))
             // Ideal:
             //   Store STDOUT and STDERR, and only show it if it fails
             //   Show a stepper like system of all commands
