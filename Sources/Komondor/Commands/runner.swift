@@ -33,9 +33,7 @@ public func runner(logger _: Logger, args: [String]) throws {
     }
 
     logger.debug("Running commands for komondor \(commands.joined())")
-
-    var failedCommands = [] as [String]
-    var executedCommand = ""
+    var executedCommand: String = ""
     do {
         try commands.forEach { command in
             executedCommand = command
@@ -48,14 +46,7 @@ public func runner(logger _: Logger, args: [String]) throws {
             //   Show a stepper like system of all commands
         }
     } catch {
-        guard let error = error as? ShellOutError else { return }
-        print(error.message) // Prints STDERR
-        print(error.output) // Prints STDOUT
-        failedCommands.append(executedCommand)
-    }
-
-    guard failedCommands.isEmpty else {
-        logger.logError("[Komondor] The following commands failed to execute: \(failedCommands.joined())")
+        logger.logError("[Komondor] The following command failed to execute: \(executedCommand)")
         exit(1)
     }
 }
