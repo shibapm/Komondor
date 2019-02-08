@@ -58,3 +58,6 @@ See more about the [config here](./Documentation/config.md).
 | [On a SwiftPM project](Documentation/with_swiftpm.md) | [On an Xcode Project](Documentation/only_xcode.md) |
 |----------------------------|---------------------------|
 
+### Deployment
+
+Use `swift `

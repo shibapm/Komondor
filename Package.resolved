@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "Logger",
+        "repositoryURL": "https://github.com/f-meloni/Logger",
+        "state": {
+          "branch": null,
+          "revision": "c1cb5a142b99687ecc55d8de101bf082889f5fd1",
+          "version": "0.2.2"
+        }
+      },
+      {
         "package": "Nimble",
         "repositoryURL": "https://github.com/Quick/Nimble.git",
         "state": {
@@ -53,6 +62,15 @@
           "branch": null,
           "revision": "8fc088dcf72802801efeecba76ea8fb041fb773d",
           "version": "4.0.0"
+        }
+      },
+      {
+        "package": "Rocket",
+        "repositoryURL": "https://github.com/f-meloni/Rocket",
+        "state": {
+          "branch": null,
+          "revision": "6e5ad004c8f488b81a44639a6690b19098f4e408",
+          "version": "0.5.0"
         }
       },
       {
