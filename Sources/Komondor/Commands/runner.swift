@@ -33,20 +33,18 @@ public func runner(logger _: Logger, args: [String]) throws {
     }
 
     logger.debug("Running commands for komondor \(commands.joined())")
-    var executedCommand: String = ""
     do {
         try commands.forEach { command in
-            executedCommand = command
             print("> \(command)")
             // Simple is fine for now
-            try shellOut(to: command)
-
+            print(try shellOut(to: command))
             // Ideal:
             //   Store STDOUT and STDERR, and only show it if it fails
             //   Show a stepper like system of all commands
         }
-    } catch {
-        logger.logError("[Komondor] The following command failed to execute: \(executedCommand)")
-        exit(1)
+    } catch let error as ShellOutError {
+        print(error.message)
+        print(error.output)
+        exit(error.terminationStatus)
     }
 }
