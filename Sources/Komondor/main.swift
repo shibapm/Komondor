@@ -16,7 +16,8 @@ if cliLength > 1 {
         try install(logger: logger)
     } else if task == "run" {
         let runnerArgs = Array(CommandLine.arguments.dropFirst().dropFirst())
-        try runner(logger: logger, args: runnerArgs)
+
+        try runner(logger: logger, args: runnerArgs, exitFunc: exit)
     }
 } else {
     print("""

@@ -3,7 +3,7 @@ import ShellOut
 
 /// The available hooks for git
 ///
-let hookList = [
+public let hookList = [
     "applypatch-msg",
     "pre-applypatch",
     "post-applypatch",
@@ -23,6 +23,11 @@ let hookList = [
     "pre-auto-gc",
     "post-rewrite",
     "sendemail-validate"
+]
+
+public let skippableHooks = [
+    "pre-commit",
+    "pre-push"
 ]
 
 public func install(logger _: Logger) throws {

@@ -2,12 +2,11 @@ import Foundation
 import PackageConfig
 import ShellOut
 
-// To emulate running the command as the script woudl do:
+// To emulate running the command as the script would do:
 //
 // swift run komondor run [hook-name]
 //
-//
-public func runner(logger _: Logger, args: [String]) throws {
+public func runner(logger _: Logger, args: [String], exitFunc: (_: Int32) -> Never) throws {
     let pkgConfig = getPackageConfig()
 
     guard let hook = args.first else {
@@ -32,21 +31,26 @@ public func runner(logger _: Logger, args: [String]) throws {
         commands = arrayOptions
     }
 
-    logger.debug("Running commands for komondor \(commands.joined())")
+    logger.debug("Running commands git hook: \(commands.joined())")
 
     do {
         try commands.forEach { command in
-            print("> \(command)")
+            logger.logInfo("> \(command)")
             // Simple is fine for now
             try shellOut(to: command)
-
-            // Ideal:
-            //   Store STDOUT and STDERR, and only show it if it fails
-            //   Show a stepper like system of all commands
         }
     } catch {
         guard let error = error as? ShellOutError else { return }
-        print(error.message) // Prints STDERR
-        print(error.output) // Prints STDOUT
+        logger.logError(error.message) // Prints STDERR
+        logger.logError(error.output) // Prints STDOUT
+
+        if skippableHooks.contains(hook) {
+            logger.logInfo("\n You can skip this hook by adding --no-validate if you need to")
+        }
+
+        // Fail the git hook
+        exitFunc(1)
     }
+    // Passed
+    exitFunc(0)
 }

@@ -36,7 +36,7 @@ Here's what it looks like in the Artsy app, Eigen:
 import PackageDescription
 
 let package = Package(
-    name: "[eigen]",
+    name: "Eigen",
     dependencies: [
       .package(url: "https://github.com/orta/Komondor.git", from: "1.0.0")
     ],
