@@ -60,4 +60,4 @@ See more about the [config here](./Documentation/config.md).
 
 ### Deployment
 
-Use `swift `
+Use `swift run rocket [version]`.
