@@ -3,15 +3,14 @@
 ///
 /// If *this* changes then the template should be updated
 ///
-public func renderScript(_ hookName: String, _ swiftPackagePath: String, _ komondorProductPath: String?) -> String {
-    let runKomondorCmd = komondorProductPath ?? "swift run komondor"
+public func renderScript(_ hookName: String, _ swiftPackagePath: String) -> String {
     return
         """
         hookName=`basename "$0"`
         gitParams="$*"
 
         if grep -q \(hookName) \(swiftPackagePath); then
-          \(runKomondorCmd) run \(hookName)
+          swift run komondor run \(hookName)
         fi
         """
 }

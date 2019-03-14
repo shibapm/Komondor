@@ -24,10 +24,7 @@ guard cliLength > 1 else {
 
 let task = CommandLine.arguments[1]
 if task == "install" {
-    let isPrebuilt = CommandLine.arguments.contains( "--prebuilt")
-    let productPath = isPrebuilt ? CommandLine.arguments[0] : nil
-
-    try install(logger: logger, productPath: productPath)
+    try install(logger: logger)
 } else if task == "run" {
     let runnerArgs = Array(CommandLine.arguments.dropFirst().dropFirst())
     try runner(logger: logger, args: runnerArgs)
