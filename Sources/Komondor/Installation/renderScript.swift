@@ -10,7 +10,19 @@ public func renderScript(_ hookName: String, _ swiftPackagePath: String) -> Stri
         gitParams="$*"
 
         if grep -q \(hookName) \(swiftPackagePath); then
-          swift run komondor run \(hookName)
+          # use prebuilt binary if one exists, preferring release
+          builds=( '.build/release/komondor' '.build/debug/komondor' )
+          for build in ${builds[@]} ; do
+            if [[ -e $build ]] ; then
+              komondor=$build
+              break
+            fi
+          done
+          # fall back to using 'swift run' if no prebuilt binary found
+          komondor=${komondor:-'swift run komondor'}
+
+          # run hook
+          $komondor run \(hookName)
         fi
         """
 }
