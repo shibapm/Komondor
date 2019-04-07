@@ -9,7 +9,7 @@ let package = Package(
     ],
     dependencies: [
         // User deps
-        .package(url: "https://github.com/f-meloni/PackageConfig.git", .branc("master")),
+        .package(url: "https://github.com/f-meloni/PackageConfig.git", .branch("master")),
         .package(url: "https://github.com/JohnSundell/ShellOut.git", from: "2.1.0"),
         // Dev deps
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
@@ -31,7 +31,7 @@ let package = Package(
 #if canImport(PackageConfig)
     import PackageConfig
 
-    let config = PackageConfig([
+    let config = PackageConfiguration([
         "komondor": [
             "pre-push": "swift test",
             "pre-commit": [

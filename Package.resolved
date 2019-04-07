@@ -30,11 +30,11 @@
       },
       {
         "package": "PackageConfig",
-        "repositoryURL": "https://github.com/orta/PackageConfig.git",
+        "repositoryURL": "https://github.com/f-meloni/PackageConfig.git",
         "state": {
-          "branch": null,
-          "revision": "9c8b95d295b15dc5307503064f3ee87772bc5d17",
-          "version": "0.9.0"
+          "branch": "master",
+          "revision": "d82ec7ec2cdd29ade283c81d880ce126b86626d7",
+          "version": null
         }
       },
       {
