@@ -9,10 +9,6 @@ import ShellOut
 //
 public func runner(logger _: Logger, args: [String]) throws {
     let pkgConfig = try PackageConfiguration.load()
-    
-    print(args.joined(separator: "\n") + "\n")
-    print(pkgConfig)
-    exit(0)
 
     guard let hook = args.first else {
         logger.logError("[Komondor] The runner was called without a hook")

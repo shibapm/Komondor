@@ -36,7 +36,7 @@ let package = Package(
             "pre-push": "swift test",
             "pre-commit": [
                 "swift test",
-                "swift run swiftFormat .",
+                "swift run swiftformat .",
                 "swift run swiftlint autocorrect --path Sources/",
                 "git add .",
             ],
@@ -46,5 +46,5 @@ let package = Package(
                 "push",
             ],
         ],
-    ])
+    ]).write()
 #endif

@@ -63,7 +63,7 @@ public struct Printer: Printing {
     }
 }
 
-fileprivate extension Sequence {
+private extension Sequence {
     func joinedDescription(separator: String) -> String {
         return map { "\($0)" }.joined(separator: separator)
     }
