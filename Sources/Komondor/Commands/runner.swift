@@ -8,7 +8,7 @@ import ShellOut
 //
 //
 public func runner(logger _: Logger, args: [String]) throws {
-    let pkgConfig = getPackageConfig()
+    let pkgConfig = try SwiftPackageConfig.load()
 
     guard let hook = args.first else {
         logger.logError("[Komondor] The runner was called without a hook")
