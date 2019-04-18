@@ -47,7 +47,7 @@ This is from [the repo](https://github.com/orta/Komondor/blob/master/Package.swi
                 "git add .",
             ],
         ],
-    ])
+    ]).write()
 #endif
 ```
 
