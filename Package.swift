@@ -9,7 +9,7 @@ let package = Package(
     ],
     dependencies: [
         // User deps
-        .package(url: "https://github.com/orta/PackageConfig.git", from: "0.0.1"),
+        .package(url: "https://github.com/shibapm/PackageConfig", from: "0.10.0"),
         .package(url: "https://github.com/JohnSundell/ShellOut.git", from: "2.1.0"),
         // Dev deps
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
@@ -31,12 +31,12 @@ let package = Package(
 #if canImport(PackageConfig)
     import PackageConfig
 
-    let config = PackageConfig([
+    let config = PackageConfiguration([
         "komondor": [
             "pre-push": "swift test",
             "pre-commit": [
                 "swift test",
-                "swift run swiftFormat .",
+                "swift run swiftformat .",
                 "swift run swiftlint autocorrect --path Sources/",
                 "git add .",
             ],
@@ -46,5 +46,5 @@ let package = Package(
                 "push",
             ],
         ],
-    ])
+    ]).write()
 #endif

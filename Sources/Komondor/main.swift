@@ -23,9 +23,14 @@ guard cliLength > 1 else {
 }
 
 let task = CommandLine.arguments[1]
-if task == "install" {
+
+switch task {
+case "install":
     try install(logger: logger)
-} else if task == "run" {
+case "run":
     let runnerArgs = Array(CommandLine.arguments.dropFirst().dropFirst())
     try runner(logger: logger, args: runnerArgs)
+default:
+    logger.logError("command not recognised")
+    exit(1)
 }
