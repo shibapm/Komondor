@@ -30,11 +30,11 @@
       },
       {
         "package": "PackageConfig",
-        "repositoryURL": "https://github.com/f-meloni/PackageConfig.git",
+        "repositoryURL": "https://github.com/shibapm/PackageConfig",
         "state": {
-          "branch": "master",
-          "revision": "408706bd9840fc990d9464712b7a7993b7d08dda",
-          "version": null
+          "branch": null,
+          "revision": "912c12f0eb33577124e7bf16e51830ae0af49962",
+          "version": "0.10.0"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/Quick/Quick.git",
         "state": {
           "branch": null,
-          "revision": "0b4ed6c706dd0cce923b5019a605a9bcc6b1b600",
-          "version": "2.0.0"
+          "revision": "94df9b449508344667e5afc7e80f8bcbff1e4c37",
+          "version": "2.1.0"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/nicklockwood/SwiftFormat.git",
         "state": {
           "branch": null,
-          "revision": "5e81f810ef2402574bdb3dee4a5100a139fe8bea",
-          "version": "0.40.4"
+          "revision": "8b3e855384f15847915fa3a02019185ee7515107",
+          "version": "0.40.8"
         }
       },
       {
@@ -125,6 +125,15 @@
           "branch": null,
           "revision": "f43166a8e18fdd0857f29e303b1bb79a5428bca0",
           "version": "4.9.0"
+        }
+      },
+      {
+        "package": "Yams",
+        "repositoryURL": "https://github.com/jpsim/Yams.git",
+        "state": {
+          "branch": null,
+          "revision": "b08dba4bcea978bf1ad37703a384097d3efce5af",
+          "version": "1.0.2"
         }
       }
     ]
