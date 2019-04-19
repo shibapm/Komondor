@@ -76,7 +76,7 @@ Next up: adding your git hooks to the config:
 This config is `"[git hook]": ["command"]`, you can read [more here](./config.md).
 
 Final step: run `swift run komondor install`, this will set up your git-hooks. If you `git add .` and 
-`git commit -m "Added Komondor" to the app, it will run the git-hooks and echo "Hi" to the terminal.
+`git commit -m "Added Komondor"` to the app, it will run the git-hooks and echo "Hi" to the terminal.
 
 ### What now?
 
