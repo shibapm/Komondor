@@ -37,8 +37,11 @@ public func runner(logger _: Logger, args: [String]) throws {
     do {
         try commands.forEach { command in
             print("> \(command)")
+            let gitParams = Array(args.dropFirst())
+            // Exporting git hook input params as shell env var GIT_PARAMS
+            let cmd = "export GIT_PARAMS=\(gitParams.joined(separator: " ")) ; \(command)"
             // Simple is fine for now
-            print(try shellOut(to: command))
+            print(try shellOut(to: cmd))
             // Ideal:
             //   Store STDOUT and STDERR, and only show it if it fails
             //   Show a stepper like system of all commands

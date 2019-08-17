@@ -22,7 +22,7 @@ public func renderScript(_ hookName: String, _ swiftPackagePath: String) -> Stri
           komondor=${komondor:-'swift run komondor'}
 
           # run hook
-          $komondor run \(hookName)
+          $komondor run \(hookName) $gitParams
         fi
         """
 }
