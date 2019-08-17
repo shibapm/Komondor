@@ -12,10 +12,11 @@ let cliLength = ProcessInfo.processInfo.arguments.count
 
 guard cliLength > 1 else {
     print("""
-    Welcome to Komondor, it has 2 commands:
+    Welcome to Komondor, it has 3 commands:
 
       - `swift run komondor install` sets up your git repo to use Komondor
       - `swift run komondor run` used by the git-hooks to run your hooks
+      - `swift run komondor uninstall` removes git-hooks created by Komondor
 
     Docs are available at: https://github.com/orta/Komondor
     """)
@@ -30,6 +31,8 @@ case "install":
 case "run":
     let runnerArgs = Array(CommandLine.arguments.dropFirst().dropFirst())
     try runner(logger: logger, args: runnerArgs)
+case "uninstall":
+    try uninstall(logger: logger)
 default:
     logger.logError("command not recognised")
     exit(1)
