@@ -2,7 +2,7 @@ import Foundation
 import PackageConfig
 import ShellOut
 
-// To emulate running the command as the script woudl do:
+// To emulate running the command as the script would do:
 //
 // swift run komondor run [hook-name]
 //
@@ -25,7 +25,7 @@ public func runner(logger _: Logger, args: [String]) throws {
         exit(1)
     }
 
-    var commands = [] as [String]
+    var commands: [String] = []
     if let stringOption = hookOptions as? String {
         commands = [stringOption]
     } else if let arrayOptions = hookOptions as? [String] {
@@ -36,7 +36,7 @@ public func runner(logger _: Logger, args: [String]) throws {
 
     do {
         try commands.forEach { command in
-            print("> \(command)")
+            print("[Komondor] > \(hook) \(command)")
             let gitParams = Array(args.dropFirst())
             // Exporting git hook input params as shell env var GIT_PARAMS
             let cmd = "export GIT_PARAMS=\(gitParams.joined(separator: " ")) ; \(command)"
@@ -49,6 +49,9 @@ public func runner(logger _: Logger, args: [String]) throws {
     } catch let error as ShellOutError {
         print(error.message)
         print(error.output)
+
+        let noVerifyMessage = skippableHooks.contains(hook) ? "add --no-verify to skip" : "cannot be skipped due to Git specs"
+        print("[Komondor] > \(hook) hook failed (\(noVerifyMessage))")
         exit(error.terminationStatus)
     } catch {
         print(error)
