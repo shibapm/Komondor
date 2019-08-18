@@ -25,6 +25,13 @@ let hookList = [
     "sendemail-validate"
 ]
 
+let skippableHooks = [
+    "commit-msg",
+    "pre-commit",
+    "pre-rebase",
+    "pre-push"
+]
+
 public func install(logger _: Logger) throws {
     // Add a skip env var
     let env = ProcessInfo.processInfo.environment
