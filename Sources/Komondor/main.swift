@@ -18,7 +18,7 @@ guard cliLength > 1 else {
       - `swift run komondor run` used by the git-hooks to run your hooks
       - `swift run komondor uninstall` removes git-hooks created by Komondor
 
-    Docs are available at: https://github.com/orta/Komondor
+    Docs are available at: https://github.com/shibapm/Komondor
     """)
     exit(0)
 }
