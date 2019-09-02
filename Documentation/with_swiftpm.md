@@ -1,7 +1,7 @@
 ### Already using SwiftPM
 
 1. Add the dependency to your `Package.swift`.
-2. Set up the git-hooks for `komondor` via [`PackageConfig`](https://github.com/orta/PackageConfig#packageconfig)
+2. Set up the git-hooks for `komondor` via [`PackageConfig`](https://github.com/shibapm/PackageConfig#packageconfig)
 
 ```diff
 // swift-tools-version:4.2
@@ -13,9 +13,9 @@ let package = Package(
     products: [ ... ],
     dependencies: [
         // My dependencies
-        .package(url: "https://github.com/orta/PackageConfig.git", from: "1.0.0"),
+        .package(url: "https://github.com/shibapm/PackageConfig.git", from: "1.0.0"),
         // Dev deps
-+        .package(url: "https://github.com/orta/Komondor.git", from: "1.0.0"),
++        .package(url: "https://github.com/shibapm/Komondor.git", from: "1.0.0"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"),
     ],
     targets: [...]
@@ -23,7 +23,7 @@ let package = Package(
 
 + #if canImport(PackageConfig)
 +     import PackageConfig
-+ 
++
 +     let config = PackageConfig([
 +         "komondor": [
 +             "pre-commit": ["swift test", "swift run swiftFormat .", "git add ."],
