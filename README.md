@@ -37,7 +37,7 @@ This is from [the repo](https://github.com/shibapm/Komondor/blob/master/Package.
 #if canImport(PackageConfig)
     import PackageConfig
 
-    let config = PackageConfig([
+    let config = PackageConfiguration([
         "komondor": [
             "pre-push": "swift test",
             "pre-commit": [
