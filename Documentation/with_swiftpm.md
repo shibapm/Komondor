@@ -24,7 +24,7 @@ let package = Package(
 + #if canImport(PackageConfig)
 +     import PackageConfig
 +
-+     let config = PackageConfig([
++     let config = PackageConfiguration([
 +         "komondor": [
 +             "pre-commit": ["swift test", "swift run swiftFormat .", "git add ."],
 +             "pre-push": "swift test"
