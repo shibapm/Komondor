@@ -9,7 +9,8 @@ let package = Package(
     ],
     dependencies: [
         // User deps
-        .package(url: "https://github.com/brightdigit/PackageConfig", .branch("master")),
+        .package(url: "https://github.com/brightdigit/PackageConfig", .branch("feature/platforms-2019
+")),
         .package(url: "https://github.com/JohnSundell/ShellOut.git", from: "2.1.0"),
         // Dev deps
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
