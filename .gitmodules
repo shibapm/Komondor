@@ -1,0 +1,5 @@
+[submodule "PackageConfig"]
+	path = PackageConfig
+	url = https://github.com/brightdigit/PackageConfig.git
+  branch = feature/platforms-2019
+  

@@ -1,4 +1,4 @@
-@testable import Komondor
+@testable import komondor
 import XCTest
 
 final class KomondorTests: XCTestCase {
