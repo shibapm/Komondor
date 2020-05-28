@@ -30,11 +30,11 @@
       },
       {
         "package": "PackageConfig",
-        "repositoryURL": "https://github.com/shibapm/PackageConfig",
+        "repositoryURL": "https://github.com/shibapm/PackageConfig.git",
         "state": {
           "branch": null,
-          "revision": "5496f0638bf461db2425e1fbd56533b692be3d5f",
-          "version": "0.11.0"
+          "revision": "bf90dc69fa0792894b08a0b74cf34029694ae486",
+          "version": "0.13.0"
         }
       },
       {
@@ -125,6 +125,15 @@
           "branch": null,
           "revision": "f43166a8e18fdd0857f29e303b1bb79a5428bca0",
           "version": "4.9.0"
+        }
+      },
+      {
+        "package": "Yams",
+        "repositoryURL": "https://github.com/jpsim/Yams",
+        "state": {
+          "branch": null,
+          "revision": "b08dba4bcea978bf1ad37703a384097d3efce5af",
+          "version": "1.0.2"
         }
       }
     ]
