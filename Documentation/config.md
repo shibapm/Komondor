@@ -32,7 +32,7 @@ These are all keys you can use in the config setting:
 #if canImport(PackageConfig)
     import PackageConfig
 
-    let config = PackageConfig([
+    let config = PackageConfiguration([
         "komondor": [
             "pre-commit": ["swift test", "swift run swiftFormat .", "git add ."],
             "pre-push": ["swift test", swift run danger-swift local", "swift run swiftlint"]
