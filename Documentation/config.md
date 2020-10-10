@@ -35,7 +35,7 @@ These are all keys you can use in the config setting:
     let config = PackageConfig([
         "komondor": [
             "pre-commit": ["swift test", "swift run swiftFormat .", "git add ."],
-            "pre-push": ["swift test", swift run danger-swift local", "swift run swiftlint"]
+            "pre-push": ["swift test", "swift run danger-swift local", "swift run swiftlint"]
         ],
     ])
 #endif
