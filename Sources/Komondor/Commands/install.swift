@@ -74,8 +74,7 @@ public func install(logger _: Logger) throws {
 
     // Copy in the komondor templates
     try hookList.forEach { hookName in
-        var hookPath = URL(fileURLWithPath: hooksRoot.absoluteString)
-        hookPath.appendPathComponent(hookName)
+        let hookPath = hooksRoot.appendingPathComponent(hookName)
 
         // Separate header from script so we can
         // update if the script updates
@@ -90,8 +89,11 @@ public func install(logger _: Logger) throws {
 
         // Create it if it's not there
         if !fileManager.fileExists(atPath: hookPath.path) {
-            logger.debug("Added the hook: \(hookName)")
-            fileManager.createFile(atPath: hookPath.path, contents: hook.data(using: .utf8), attributes: execAttribute)
+            if fileManager.createFile(atPath: hookPath.path, contents: hook.data(using: .utf8), attributes: execAttribute) {
+                logger.debug("Added the hook: \(hookName)")
+            } else {
+                logger.logError("Could not add the hook: \(hookName)")
+            }
         } else {
             // Check if the script part has had an update since last running install
             let existingFileData = try Data(contentsOf: hookPath, options: [])

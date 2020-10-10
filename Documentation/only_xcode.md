@@ -49,8 +49,8 @@ let package = Package(
 ```
 
 > **Note**: See that _target_? You must have a target (right now) in your `Package.swift` in order to use
-> tools which come from your dependencies. Find a single source file which you can call the package using
-> the `path:` to find it's folder, and then `sources:` to set up that one target.
+> tools that come from your dependencies. Find a single source file that you can call the package with, using
+> the `path:` to find its folder, and then `sources:` to set up that one target.
 
 This adds `Komondor` to the app, and allows you to run the CLI for Komondor, you can verify by running
 `swift run komondor` and seeing the help message.
@@ -65,7 +65,7 @@ Next up: adding your git hooks to the config:
 + #if canImport(PackageConfig)
 +     import PackageConfig
 +
-+     let config = PackageConfig([
++     let config = PackageConfiguration([
 +         "komondor": [
 +             "pre-commit": "echo 'Hi'"
 +         ],
