@@ -72,6 +72,16 @@ public func install(logger _: Logger) throws {
     // TODO: What if Package.swift isn't in the CWD?
     let swiftPackagePath = "Package.swift"
 
+    // Relative path to folder containing Package.swift
+    let topLevelString = try shellOut(to: "git rev-parse --show-toplevel").trimmingCharacters(in: .whitespaces)
+    let cwd = fileManager.currentDirectoryPath
+    let swiftPackagePrefix: String?
+    if cwd.hasPrefix(topLevelString), cwd != topLevelString {
+        swiftPackagePrefix = "." + cwd.dropFirst(topLevelString.count)
+    } else {
+        swiftPackagePrefix = nil
+    }
+
     // Copy in the komondor templates
     try hookList.forEach { hookName in
         let hookPath = hooksRoot.appendingPathComponent(hookName)
@@ -79,7 +89,7 @@ public func install(logger _: Logger) throws {
         // Separate header from script so we can
         // update if the script updates
         let header = renderScriptHeader(hookName)
-        let script = renderScript(hookName, swiftPackagePath)
+        let script = renderScript(hookName, swiftPackagePath, swiftPackagePrefix)
         let hook = header + script
 
         // This is the same permissions that husky uses
