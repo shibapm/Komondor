@@ -1,4 +1,4 @@
-<p align="center"><a href='https://www.akc.org/dog-breeds/komondor/'><img width ="100%" src="http://dogsaholic.com/wp-content/uploads/2016/06/Komondor-dog.jpg"><a/></p>
+<p align="center"><a href='https://www.akc.org/dog-breeds/komondor/'><img width ="100%" src="./komondor.jpg"><a/></p>
 
 # Komondor
 
@@ -42,7 +42,7 @@ This is from [the repo](https://github.com/shibapm/Komondor/blob/master/Package.
             "pre-push": "swift test",
             "pre-commit": [
                 "swift test",
-                "swift run swiftFormat .",
+                "swift run swiftformat .",
                 "swift run swiftlint autocorrect --path Sources/",
                 "git add .",
             ],
@@ -57,7 +57,6 @@ See more about the [config here](./Documentation/config.md).
 
 | [On a SwiftPM project](Documentation/with_swiftpm.md) | [On an Xcode Project](Documentation/only_xcode.md) |
 | ----------------------------------------------------- | -------------------------------------------------- |
-
 
 ### Deployment
 

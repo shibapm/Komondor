@@ -3,12 +3,14 @@
 ///
 /// If *this* changes then the template should be updated
 ///
-public func renderScript(_ hookName: String, _ swiftPackagePath: String) -> String {
+public func renderScript(_ hookName: String, _ swiftPackagePath: String, _ swiftPackagePrefix: String?) -> String {
+    let changeDir = swiftPackagePrefix.map { "cd \($0)\n" }
+        ?? ""
     return
         """
         hookName=`basename "$0"`
         gitParams="$*"
-
+        \(changeDir)
         if grep -q \(hookName) \(swiftPackagePath); then
           # use prebuilt binary if one exists, preferring release
           builds=( '.build/release/komondor' '.build/debug/komondor' )
