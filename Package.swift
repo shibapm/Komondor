@@ -9,7 +9,7 @@ let package = Package(
     ],
     dependencies: [
         // User deps
-        .package(url: "https://github.com/shibapm/PackageConfig.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/shibapm/PackageConfig.git", .upToNextMajor(from: "1.0.1")),
         .package(url: "https://github.com/JohnSundell/ShellOut.git", from: "2.1.0"),
         // Dev deps
         .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"), // dev
