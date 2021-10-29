@@ -21,10 +21,6 @@ let package = Package(
             name: "Komondor",
             dependencies: ["PackageConfig", "ShellOut"]
         ),
-        .testTarget(
-            name: "KomondorTests",
-            dependencies: ["Komondor"]
-        ),
     ]
 )
 
@@ -33,9 +29,9 @@ let package = Package(
 
     let config = PackageConfiguration([
         "komondor": [
-            "pre-push": "swift test",
+            "pre-push": "swift build",
             "pre-commit": [
-                "swift test",
+                "swift build",
                 "swift run swiftformat .",
                 "swift run swiftlint autocorrect --path Sources/",
                 "git add .",

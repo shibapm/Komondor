@@ -16,13 +16,13 @@ public func runner(logger _: Logger, args: [String]) throws {
     }
 
     guard let config = pkgConfig["komondor"] as? [String: Any] else {
-        logger.logError("[Komondor] Could not find komondor settings inside the Package.swift")
-        exit(1)
+        logger.logWarning("[Komondor] Could not find komondor settings inside the Package.swift")
+        exit(0)
     }
 
     guard let hookOptions = config[hook] else {
-        logger.logError("[Komondor] Could not find a key for '\(hook)' under the komondor settings'")
-        exit(1)
+        logger.logWarning("[Komondor] Could not find a key for '\(hook)' under the komondor settings'")
+        exit(0)
     }
 
     var commands: [String] = []

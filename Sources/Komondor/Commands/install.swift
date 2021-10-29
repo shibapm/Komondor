@@ -69,9 +69,6 @@ public func install(logger _: Logger) throws {
         try shellOut(to: .createFolder(named: hooksRoot.path))
     }
 
-    // TODO: What if Package.swift isn't in the CWD?
-    let swiftPackagePath = "Package.swift"
-
     // Relative path to folder containing Package.swift
     let topLevelString = try shellOut(to: "git rev-parse --show-toplevel").trimmingCharacters(in: .whitespaces)
     let cwd = fileManager.currentDirectoryPath
@@ -89,7 +86,7 @@ public func install(logger _: Logger) throws {
         // Separate header from script so we can
         // update if the script updates
         let header = renderScriptHeader(hookName)
-        let script = renderScript(hookName, swiftPackagePath, swiftPackagePrefix)
+        let script = renderScript(hookName, swiftPackagePrefix)
         let hook = header + script
 
         // This is the same permissions that husky uses
