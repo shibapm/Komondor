@@ -7,18 +7,13 @@ import ShellOut
 // swift run komondor run [hook-name]
 //
 //
-public func runner(logger _: Logger, args: [String]) throws {
-    let pkgConfig = try PackageConfiguration.load()
-
+public func runner(logger: Logger, configSource: ConfigSource, args: [String]) throws {
     guard let hook = args.first else {
         logger.logError("[Komondor] The runner was called without a hook")
         exit(1)
     }
 
-    guard let config = pkgConfig["komondor"] as? [String: Any] else {
-        logger.logError("[Komondor] Could not find komondor settings inside the Package.swift")
-        exit(1)
-    }
+    let config = try configSource.config
 
     if let hookOptions = config[hook] {
         var commands: [String] = []

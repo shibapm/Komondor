@@ -5,6 +5,8 @@ public let KomondorVersion = "1.0.0"
 
 let isVerbose = CommandLine.arguments.contains("--verbose") || (ProcessInfo.processInfo.environment["DEBUG"] != nil)
 let isSilent = CommandLine.arguments.contains("--silent")
+let isUsingFileConfig = CommandLine.arguments.contains("--use-file-config")
+
 let logger = Logger(isVerbose: isVerbose, isSilent: isSilent)
 logger.debug("Setting up .git-hooks for Komondor (v\(KomondorVersion))")
 
@@ -29,8 +31,9 @@ switch task {
 case "install":
     try install(logger: logger)
 case "run":
+    let configSource: ConfigSource = isUsingFileConfig ? FileConfigSource(logger: logger) : PackageConfigSource(logger: logger)
     let runnerArgs = Array(CommandLine.arguments.dropFirst().dropFirst())
-    try runner(logger: logger, args: runnerArgs)
+    try runner(logger: logger, configSource: configSource, args: runnerArgs)
 case "uninstall":
     try uninstall(logger: logger)
 default:
