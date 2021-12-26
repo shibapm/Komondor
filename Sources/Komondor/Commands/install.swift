@@ -32,7 +32,7 @@ let skippableHooks = [
     "pre-push"
 ]
 
-public func install(logger _: Logger) throws {
+public func install(logger _: Logger, usingConfigFile: Bool = false) throws {
     // Add a skip env var
     let env = ProcessInfo.processInfo.environment
     if env["SKIP_KOMONDOR"] != nil {
@@ -86,7 +86,7 @@ public func install(logger _: Logger) throws {
         // Separate header from script so we can
         // update if the script updates
         let header = renderScriptHeader(hookName)
-        let script = renderScript(hookName, swiftPackagePrefix)
+        let script = renderScript(hookName, swiftPackagePrefix, usingConfigFile)
         let hook = header + script
 
         // This is the same permissions that husky uses
