@@ -49,7 +49,7 @@ public func runner(logger _: Logger, args: [String]) throws {
             print(error.message)
             print(error.output)
 
-            let noVerifyMessage = skippableHooks.contains(hook) ? "add --no-verify to skip" : "cannot be skipped due to Git specs"
+            let noVerifyMessage = skippableHooks.map(\.rawValue).contains(hook) ? "add --no-verify to skip" : "cannot be skipped due to Git specs"
             print("[Komondor] > \(hook) hook failed (\(noVerifyMessage))")
             exit(error.terminationStatus)
         } catch {

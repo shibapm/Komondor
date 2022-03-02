@@ -3,36 +3,56 @@ import ShellOut
 
 /// The available hooks for git
 ///
-let hookList = [
-    "applypatch-msg",
-    "pre-applypatch",
-    "post-applypatch",
-    "pre-commit",
-    "prepare-commit-msg",
-    "commit-msg",
-    "post-commit",
-    "pre-rebase",
-    "post-checkout",
-    "post-merge",
-    "pre-push",
-    "pre-receive",
-    "update",
-    "post-receive",
-    "post-update",
-    "push-to-checkout",
-    "pre-auto-gc",
-    "post-rewrite",
-    "sendemail-validate"
+public enum Hooks: String, CaseIterable {
+    case applyPatchMsg = "applypatch-msg"
+    case preApplyPatch = "pre-applypatch"
+    case postApplyPatch = "post-applypatch"
+    case preCommit = "pre-commit"
+    case prepareCommitMsg = "prepare-commit-msg"
+    case commitMsg = "commit-msg"
+    case postCommit = "post-commit"
+    case preRebase = "pre-rebase"
+    case postCheckout = "post-checkout"
+    case postMerge = "post-merge"
+    case prePush = "pre-push"
+    case preReceive = "pre-receive"
+    case update
+    case postReceive = "post-receive"
+    case postUpdate = "post-update"
+    case pushToCheckout = "push-to-checkout"
+    case preAutoGc = "pre-auto-gc"
+    case postRewrite = "post-rewrite"
+    case sendEmailValidate = "sendemail-validate"
+}
+
+public let hookList: [Hooks] = [
+    .applyPatchMsg,
+    .preApplyPatch,
+    .postApplyPatch,
+    .preCommit,
+    .prepareCommitMsg,
+    .preRebase,
+    .postCheckout,
+    .postMerge,
+    .prePush,
+    .preReceive,
+    .update,
+    .postReceive,
+    .postUpdate,
+    .pushToCheckout,
+    .preAutoGc,
+    .postRewrite,
+    .sendEmailValidate
 ]
 
-let skippableHooks = [
-    "commit-msg",
-    "pre-commit",
-    "pre-rebase",
-    "pre-push"
+let skippableHooks: [Hooks] = [
+    .commitMsg,
+    .preCommit,
+    .preRebase,
+    .prePush
 ]
 
-public func install(logger _: Logger) throws {
+public func install(hooks: [Hooks] = hookList, logger _: Logger) throws {
     // Add a skip env var
     let env = ProcessInfo.processInfo.environment
     if env["SKIP_KOMONDOR"] != nil {
@@ -80,7 +100,8 @@ public func install(logger _: Logger) throws {
     }
 
     // Copy in the komondor templates
-    try hookList.forEach { hookName in
+    let hooksToInstall = hooks.isEmpty ? hookList : hooks
+    try hooksToInstall.map(\.rawValue).forEach { hookName in
         let hookPath = hooksRoot.appendingPathComponent(hookName)
 
         // Separate header from script so we can
@@ -114,5 +135,5 @@ public func install(logger _: Logger) throws {
             }
         }
     }
-    print("[Komondor] git-hooks installed")
+    print("[Komondor] git-hooks installed" + (hooks.isEmpty ? "" : ": \(hooks.map(\.rawValue))"))
 }
