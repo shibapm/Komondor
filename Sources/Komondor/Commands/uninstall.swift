@@ -26,7 +26,7 @@ public func uninstall(logger: Logger) throws {
         exit(0)
     }
 
-    try hookList.forEach { hookName in
+    try hookList.map(\.rawValue).forEach { hookName in
         var hookPath = URL(fileURLWithPath: hooksRoot.absoluteString)
         hookPath.appendPathComponent(hookName)
 

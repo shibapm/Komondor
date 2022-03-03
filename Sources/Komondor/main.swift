@@ -14,8 +14,8 @@ guard cliLength > 1 else {
     print("""
     Welcome to Komondor, it has 3 commands:
 
-      - `swift run komondor install` sets up your git repo to use Komondor
-      - `swift run komondor run` used by the git-hooks to run your hooks
+      - `swift run komondor install [pre-commit post-checkout pre-rebase ...]` sets up your git repo to use Komondor
+      - `swift run komondor run [hook-name]` used by the git-hooks to run your hooks
       - `swift run komondor uninstall` removes git-hooks created by Komondor
 
     Docs are available at: https://github.com/shibapm/Komondor
@@ -27,7 +27,9 @@ let task = CommandLine.arguments[1]
 
 switch task {
 case "install":
-    try install(logger: logger)
+    let hooks = Array(CommandLine.arguments.dropFirst(2))
+        .compactMap { Hooks(rawValue: $0) }
+    try install(hooks: hooks, logger: logger)
 case "run":
     let runnerArgs = Array(CommandLine.arguments.dropFirst().dropFirst())
     try runner(logger: logger, args: runnerArgs)
