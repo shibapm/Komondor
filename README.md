@@ -7,7 +7,7 @@ Git Hook automation for Swift and Xcode projects. A port of [Husky](https://gith
 ### TL:DR
 
 1. Add or amend a `Package.swift`
-2. Add this dependency `.package(url: "https://github.com/shibapm/Komondor.git", from: "1.0.0"),`
+2. Add this dependency `.package(url: "https://github.com/shibapm/Komondor.git", from: "1.1.4"),`
 3. Run the install command: `swift run komondor install`
 4. Add a config section to your [`Package.swift`](https://github.com/shibapm/Komondor/blob/master/Package.swift)
 
